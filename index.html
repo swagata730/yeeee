@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Love ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 380px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    animation: fadeIn 2s ease;
+}
+
+h1 {
+    color: #ff4d6d;
+}
+
+#typing {
+    font-size: 18px;
+    color: #444;
+    min-height: 60px;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.gallery img {
+    width: 120px;
+    height: 120px;
+    border-radius: 18px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+button {
+    background: #ff4d6d;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button:hover {
+    background: #e63950;
+}
+
+#noBtn {
+    position: relative;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: floatUp 4s linear infinite;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 💕 Background music -->
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <h1>Hey Apu ❤️</h1>
+
+    <!-- 🥹 Typing animation -->
+    <p id="typing"></p>
+
+    <!-- 💌 Photo gallery (2 photos) -->
+    <div class="gallery">
+        <img src="photo1.jpg" alt="Us ❤️">
+        <img src="photo2.jpg" alt="Forever 💕">
+    </div>
+
+    <h3>Will you be my Valentine Apu? 💖</h3>
+
+    <!-- 💍 Funny buttons -->
+    <button onclick="yesClicked()">Yes 💍</button>
+    <button id="noBtn" onmouseover="moveNo()">No 😜</button>
+</div>
+
+<script>
+// 🥹 Typing effect
+const text = "Every moment with you feels magical. You are my happiness, my comfort, my forever.";
+let i = 0;
+
+function typeText() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeText, 50);
+    }
+}
+typeText();
+
+// 💍 Yes button
+function yesClicked() {
+    alert("YAYYY 🥹💖 I love you endlessly Apu ❤️");
+    createHearts();
+}
+
+// 😜 No button runs away
+function moveNo() {
+    const btn = document.getElementById("noBtn");
+    btn.style.left = Math.random() * 200 - 100 + "px";
+    btn.style.top = Math.random() * 200 - 100 + "px";
+}
+
+// ❤️ Hearts animation
+function createHearts() {
+    for (let j = 0; j < 30; j++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 4000);
+    }
+}
+</script>
+
+</body>
+</html>
